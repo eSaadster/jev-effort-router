@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "jev-effort-router",
+  "description": "Reasoning-effort routing for Claude Code with TypeSafe Jev.",
+  "owner": {
+    "name": "eSaadster"
+  },
+  "plugins": [
+    {
+      "name": "jev-effort-router",
+      "description": "Picks the main loop's reasoning effort per prompt with TypeSafe's Jev; /auto-effort on|off|status.",
+      "version": "0.1.0",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

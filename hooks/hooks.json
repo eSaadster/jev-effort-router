@@ -1,0 +1,6 @@
+{
+  "description": "Picks the main loop's reasoning effort for each prompt with TypeSafe's Jev: classified at prompt.submit, applied at turn.step, toggled with /auto-effort.",
+  "modules": [
+    "./jev-effort-router.ts"
+  ]
+}

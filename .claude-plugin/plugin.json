@@ -1,0 +1,74 @@
+{
+  "name": "jev-effort-router",
+  "version": "0.1.0",
+  "description": "Picks the reasoning effort of the main loop for each prompt with TypeSafe's Jev, in both directions, leaving the model alone. Toggle with /auto-effort on|off|status. Adapted from jev-model-router (claude-code-templates, MIT).",
+  "author": {
+    "name": "eSaadster",
+    "url": "https://github.com/eSaadster"
+  },
+  "license": "MIT",
+  "keywords": [
+    "mod",
+    "function-hooks",
+    "effort",
+    "routing"
+  ],
+  "userConfig": {
+    "typesafeApiKey": {
+      "type": "string",
+      "title": "TypeSafe API key",
+      "description": "Key for TypeSafe's own API; with none set the engine's built-in classifier is used instead",
+      "default": "",
+      "sensitive": true
+    },
+    "typesafeBaseUrl": {
+      "type": "string",
+      "title": "TypeSafe base URL",
+      "description": "Base URL of TypeSafe's own API; empty uses https://api.typesafe.ai",
+      "default": ""
+    },
+    "typesafeModel": {
+      "type": "string",
+      "title": "TypeSafe model",
+      "description": "Decision model on TypeSafe's own API; empty uses jev-latest",
+      "default": ""
+    },
+    "maxEffort": {
+      "type": "string",
+      "title": "Highest effort",
+      "description": "The most reasoning the router will ever ask for",
+      "default": "xhigh",
+      "options": [
+        "low",
+        "medium",
+        "high",
+        "xhigh"
+      ]
+    },
+    "minUpgradeConfidence": {
+      "type": "number",
+      "title": "Confidence to spend more",
+      "description": "How sure the decision must be to raise the effort",
+      "default": 0.3
+    },
+    "minDowngradeConfidence": {
+      "type": "number",
+      "title": "Confidence to spend less",
+      "description": "How sure it must be to lower the effort",
+      "default": 0.6
+    },
+    "timeoutMs": {
+      "type": "number",
+      "title": "Latency budget (ms)",
+      "description": "How long to wait for a decision before letting the turn through unchanged",
+      "default": 3000
+    },
+    "logDecisions": {
+      "type": "boolean",
+      "title": "Log decisions",
+      "description": "Write each decision to the session log",
+      "default": true
+    }
+  },
+  "repository": "https://github.com/eSaadster/jev-effort-router"
+}
