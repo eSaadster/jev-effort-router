@@ -1,6 +1,6 @@
 {
   "name": "jev-effort-router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Picks the reasoning effort of the main loop for each prompt with TypeSafe's Jev, in both directions, leaving the model alone. Toggle with /auto-effort on|off|status. Adapted from jev-model-router (claude-code-templates, MIT).",
   "author": {
     "name": "eSaadster",

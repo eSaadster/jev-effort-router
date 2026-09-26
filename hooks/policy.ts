@@ -20,20 +20,22 @@ export const EFFORT_ORDER = ['low', 'medium', 'high', 'xhigh'] as const
 export type Effort = (typeof EFFORT_ORDER)[number]
 
 /**
- * How each level is described to the decision model: the shape of the work,
- * not its length.
+ * How each level is described to the decision model. Effort buys verification,
+ * edge-case testing and independent judgement, not a better approach, so the
+ * levels are told apart by how much of that the task needs and how closely the
+ * user stays in the loop. After "Spending your effort" (Thariq, 25 Sep 2026).
  */
 const EFFORT_CRITERIA: Record<Effort, string> = {
-  low: 'Trivial or local: a fact already in context, simple formatting, one obvious edit, reading or summarising a file, running one command.',
+  low: 'Quick and in the loop: questions, explanations, brainstorming, sketching or prototyping an idea to iterate on, easy or obvious changes, formatting, reading or summarising files, running a command, or a small follow-up tweak to work just done.',
   medium:
-    'Ordinary engineering: a well-specified change across a few files, writing tests, fixing a clearly described bug, reviewing a small diff.',
-  high: 'Complex debugging, substantial implementation, design tradeoffs, or several interacting components.',
+    'Regular software engineering: implementing a feature or change, especially from a clear spec, refactoring, writing tests, fixing a bug whose cause is already known, reviewing a small diff.',
+  high: 'Verification matters or edge cases are likely: fixing a bug in an existing (brownfield) codebase, reproducing a failure before fixing it, testing and verifying work already built, code review, performance work, data analysis whose result depends on method choices.',
   xhigh:
-    'Exceptionally hard or high-stakes: a failure whose cause is unknown, architecture, security, data migrations, concurrency, or work needing rigorous verification.',
+    'Hard problems to solve autonomously, or many hidden edge cases: a failure whose cause is unknown, security review or finding vulnerabilities, sanitisers and parsers, concurrency or storage engines, data migrations, hardware, end-to-end building and verifying an app without the user in the loop.',
 }
 
 const EFFORT_INSTRUCTIONS =
-  "Select the least reasoning effort likely to solve the user's request reliably. Judge the actual complexity, ambiguity, dependencies and risk of the task, not the length of the prompt. Multiple steps, unfamiliar code, debugging, architecture or important correctness checks call for more effort."
+  "Select the least reasoning effort likely to solve the user's request reliably. Higher effort mainly buys more verification, edge-case testing and independent judgement; it does not fix a wrong approach. Judge the task, not the length of the prompt. Favour less effort when the user is iterating, sketching, asking or wants to stay in the loop, and when a detailed spec already settles the choices. Favour more effort when correctness is hard to check, edge cases are hidden, the codebase is existing and unfamiliar, or the user asks for the work done end to end without them."
 
 export const DEFAULT_BASE_URL = 'https://api.typesafe.ai'
 

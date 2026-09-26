@@ -9,7 +9,7 @@
     {
       "name": "jev-effort-router",
       "description": "Picks the main loop's reasoning effort per prompt with TypeSafe's Jev; /auto-effort on|off|status.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "source": "./",
       "category": "productivity"
     }
